@@ -1,5 +1,7 @@
 package module01
 
+import "strconv"
+
 // BaseToDec takes in a number and the base it is currently
 // in and returns the decimal equivalent as an integer.
 //
@@ -9,5 +11,6 @@ package module01
 //   BaseToDec("1110", 2) => 14
 //
 func BaseToDec(value string, base int) int {
-	return 0
+	n, _ := strconv.ParseInt(value, base, 64)
+	return int(n)
 }
