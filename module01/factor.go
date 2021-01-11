@@ -22,30 +22,25 @@ package module01
 //   Factor([], 4) // []int{4}
 //
 func Factor(primes []int, number int) []int {
-	result := make([]int, 0, len(primes))
+	res := make([]int, 0, len(primes))
 
-	index := 0
-	for {
-		if index > len(primes)-1 {
-			break
+	for _, prime := range primes {
+		if prime <= 1 {
+			continue
 		}
-		prime := primes[index]
 		if prime > number {
 			break
 		}
 
-		if rem := number % prime; rem == 0 {
-			result = append(result, prime)
+		for number%prime == 0 {
+			res = append(res, prime)
 			number /= prime
-			continue
 		}
-
-		index++
 	}
 
 	if number > 1 {
-		result = append(result, number)
+		res = append(res, number)
 	}
 
-	return result
+	return res
 }
