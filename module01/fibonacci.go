@@ -31,5 +31,11 @@ func Fibonacci(n int) int {
 	if n == 1 {
 		return 1
 	}
-	return Fibonacci(n-2) + Fibonacci(n-1)
+
+	prev, next := 0, 1
+	for i := 2; i <= n; i++ {
+		prev, next = next, prev+next
+	}
+
+	return next
 }
