@@ -31,7 +31,6 @@ func BaseToDec(value string, base int) int {
 		'E': 14,
 		'F': 15,
 	}
-	const charset = "0123456789ABCDEF"
 	n := 0
 	l := len(value)
 	for i, v := range value {
