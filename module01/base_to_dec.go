@@ -2,7 +2,6 @@ package module01
 
 import (
 	"fmt"
-	"math"
 )
 
 // BaseToDec takes in a number and the base it is currently
@@ -14,7 +13,7 @@ import (
 //   BaseToDec("1110", 2) => 14
 //
 func BaseToDec(value string, base int) int {
-	m := map[rune]int{
+	m := map[byte]int{
 		'0': 0,
 		'1': 1,
 		'2': 2,
@@ -33,13 +32,15 @@ func BaseToDec(value string, base int) int {
 		'F': 15,
 	}
 	n := 0
-	l := len(value)
-	for i, v := range value {
-		index, ok := m[v]
+	multiplier := 1
+	for i := len(value) - 1; i >= 0; i-- {
+		digit := value[i]
+		index, ok := m[digit]
 		if !ok {
-			panic(fmt.Sprintf("Unknown digit %q", v))
+			panic(fmt.Sprintf("Unknown digit %q", digit))
 		}
-		n += index * int(math.Pow(float64(base), float64(l-i-1)))
+		n += index * multiplier
+		multiplier *= base
 	}
 	return n
 }
