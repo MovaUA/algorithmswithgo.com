@@ -1,6 +1,7 @@
 package module01
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -34,7 +35,11 @@ func BaseToDec(value string, base int) int {
 	n := 0
 	l := len(value)
 	for i, v := range value {
-		n += m[v] * int(math.Pow(float64(base), float64(l-i-1)))
+		index, ok := m[v]
+		if !ok {
+			panic(fmt.Sprintf("Unknown digit %q", v))
+		}
+		n += index * int(math.Pow(float64(base), float64(l-i-1)))
 	}
 	return n
 }
