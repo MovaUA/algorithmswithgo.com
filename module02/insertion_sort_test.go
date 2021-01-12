@@ -17,6 +17,10 @@ func TestInsertionSortString(t *testing.T) {
 	sorttest.TestString(t, InsertionSortString)
 }
 
+func TestInsertionSortPerson(t *testing.T) {
+	testPeople(t, InsertionSortPerson)
+}
+
 func TestInsertionSortInterface(t *testing.T) {
 	sorttest.TestInterface(t, InsertionSort)
 }
