@@ -1,16 +1,17 @@
-package module02_test
+package module02
 
 import (
+	"algo/module02"
 	"algo/module02/sorttest"
 	"testing"
 )
 
 func TestBubbleSortInt(t *testing.T) {
-	sorttest.TestInt(t, BubbleSortInt)
+	sorttest.TestInt(t, module02.BubbleSortInt)
 }
 
 func BenchmarkBubbleSortInt(b *testing.B) {
-	sorttest.BenchmarkInt(b, BubbleSortInt)
+	sorttest.BenchmarkInt(b, module02.BubbleSortInt)
 
 	// Below is the code used in the video. I have opted to use a single function
 	// in the sorttest package for all benchmarks moving forward to make it easier
