@@ -37,6 +37,24 @@ func insert(sorted []int, item int) []int {
 // InsertionSortString uses insertion sort to sort string slices. Try
 // implementing it for practice.
 func InsertionSortString(list []string) {
+	sorted := make([]string, 0, len(list))
+
+	for _, item := range list {
+		sorted = insertString(sorted, item)
+	}
+
+	copy(list, sorted)
+}
+func insertString(sorted []string, item string) []string {
+	for i, sortedItem := range sorted {
+		if item < sortedItem {
+			sorted = append(sorted, "")
+			copy(sorted[i+1:], sorted[i:])
+			sorted[i] = item
+			return sorted
+		}
+	}
+	return append(sorted, item)
 }
 
 // InsertionSortPerson uses insertion sort to sort Person slices by: Age, then
