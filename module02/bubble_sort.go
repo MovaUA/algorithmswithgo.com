@@ -79,4 +79,16 @@ func greater(p1, p2 Person) bool {
 // BubbleSort uses the standard library's sort.Interface to sort. Try
 // implementing it for practice.
 func BubbleSort(list sort.Interface) {
+	for sweepNum := 0; sweepNum < list.Len()-1; sweepNum++ {
+		swapped := false
+		for i := 0; i < list.Len()-1-sweepNum; i++ {
+			if list.Less(i+1, i) {
+				list.Swap(i+1, i)
+				swapped = true
+			}
+		}
+		if !swapped {
+			return
+		}
+	}
 }
