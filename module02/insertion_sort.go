@@ -13,31 +13,27 @@ import "sort"
 func InsertionSortInt(list []int) {
 	sorted := make([]int, 0, len(list))
 
-	if len(list) > 0 {
-		sorted = append(sorted, list[0])
-	}
-
-	for j := 1; j < len(list); j++ {
-		v := list[j]
-
-		if v >= sorted[len(sorted)-1] {
-			sorted = append(sorted, v)
-			continue
-		}
-
-		for i := 0; i < len(sorted); i++ {
-			if sorted[i] >= v {
-				sorted = append(sorted, 0)
-				copy(sorted[i+1:], sorted[i:])
-				sorted[i] = v
-				break
-			}
-		}
+	for _, item := range list {
+		sorted = insert(sorted, item)
 	}
 
 	for i, v := range sorted {
 		list[i] = v
 	}
+}
+
+func insert(sorted []int, item int) []int {
+	for i, sortedItem := range sorted {
+		if item < sortedItem {
+			// sorted[:i] + item + sorted[i:]
+			sorted = append(sorted, 0)
+			copy(sorted[i+1:], sorted[i:])
+			sorted[i] = item
+
+			return sorted
+		}
+	}
+	return append(sorted, item)
 }
 
 // InsertionSortString uses insertion sort to sort string slices. Try
