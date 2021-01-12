@@ -11,6 +11,33 @@ import "sort"
 // Test with: go test -run InsertionSortInt$
 // The '$' at the end will ensure that the InsertionSortInterface tests won't be run.
 func InsertionSortInt(list []int) {
+	sorted := make([]int, 0, len(list))
+
+	if len(list) > 0 {
+		sorted = append(sorted, list[0])
+	}
+
+	for j := 1; j < len(list); j++ {
+		v := list[j]
+
+		if v >= sorted[len(sorted)-1] {
+			sorted = append(sorted, v)
+			continue
+		}
+
+		for i := 0; i < len(sorted); i++ {
+			if sorted[i] >= v {
+				sorted = append(sorted, 0)
+				copy(sorted[i+1:], sorted[i:])
+				sorted[i] = v
+				break
+			}
+		}
+	}
+
+	for i, v := range sorted {
+		list[i] = v
+	}
 }
 
 // InsertionSortString uses insertion sort to sort string slices. Try
