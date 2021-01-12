@@ -53,6 +53,7 @@ func BubbleSortPerson(people []Person) {
 		}
 	}
 }
+
 func greater(p1, p2 Person) bool {
 	if p1.Age > p2.Age {
 		return true
