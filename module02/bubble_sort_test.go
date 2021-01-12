@@ -34,6 +34,10 @@ func TestBubbleSortString(t *testing.T) {
 	sorttest.TestString(t, BubbleSortString)
 }
 
+func TestBubbleSortPerson(t *testing.T) {
+	testPeople(t, BubbleSortPerson)
+}
+
 func TestBubbleSortInterface(t *testing.T) {
 	sorttest.TestInterface(t, BubbleSort)
 }
