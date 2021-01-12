@@ -52,7 +52,7 @@ func TestString(t *testing.T, sortFn func([]string)) {
 				}
 				if list[i] != want[i] {
 					errorCount++
-					t.Errorf("list[%d] = %d; want %d", i, list[i], want[i])
+					t.Errorf("list[%d] = %q; want %q", i, list[i], want[i])
 				}
 			}
 		})

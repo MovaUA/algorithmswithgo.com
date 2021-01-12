@@ -24,3 +24,7 @@ func TestInsertionSortPerson(t *testing.T) {
 func TestInsertionSortInterface(t *testing.T) {
 	sorttest.TestInterface(t, InsertionSort)
 }
+
+func BenchmarkInsertionSortInterface(b *testing.B) {
+	sorttest.BenchmarkInterface(b, InsertionSort)
+}
