@@ -85,4 +85,17 @@ func insertPerson(sorted []Person, person Person) []Person {
 // implementing it for practice, but be wary that this particular algorithm is a
 // little tricky to implement this way.
 func InsertionSort(list sort.Interface) {
+	for i := 1; i < list.Len(); i++ {
+		insertInterface(list, i)
+	}
+}
+
+func insertInterface(list sort.Interface, index int) {
+	for i := index - 1; i >= 0; i-- {
+		if list.Less(i+1, i) {
+			list.Swap(i+1, i)
+			continue
+		}
+		return
+	}
 }
