@@ -36,9 +36,7 @@ func TestInt(t *testing.T, sortFn func([]int)) {
 	} {
 		t.Run(name, func(t *testing.T) {
 			want := make([]int, len(list))
-			for i, val := range list {
-				want[i] = val
-			}
+			copy(want, list)
 			sort.Ints(want)
 			sortFn(list)
 			errorCount := 0
